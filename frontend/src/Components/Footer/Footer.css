@@ -1,0 +1,37 @@
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(21, 20, 20, 0.681);
+    bottom: 0;
+    width: 100%;
+    position: fixed;
+    opacity: 1; 
+  }
+  
+  .footer > a {
+    width: 2vmax;
+    height: 2vmax;
+    margin: 1vmax 4vmax;
+  }
+  .footer > a > svg {
+    font-size: 2vmax;
+    transition: all 0.5s;
+    color:white;
+  }
+  
+  .footer > a > svg:hover {
+    color:white;
+    transform: scale(1.2);
+  }
+  
+  @media screen and (max-width: 600px) {
+    .footer > a {
+      width: 8vw;
+      height: 8vw;
+      margin: 2vw 8vw;
+    }
+    .footer > a > svg {
+      font-size: 8vw;
+    }
+  }
