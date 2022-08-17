@@ -23,11 +23,15 @@ const usersRoutes = require("./rought/User");
 app.use("/api/v1", postRoutes);
 app.use("/api/v1", usersRoutes);
 
-app.use(express.static(path.join(__dirname,"../frontend/build")));
+// By default value of  process.env.NODE_ENV is Production in heroku..
+if(process.env.NODE_ENV === "production"){
+  app.use(express.static(path.join(__dirname,"../frontend/build")));
+  
+  app.get("*",(req, res) => {
+    res.sendFile(path.resolve(__dirname,"../frontend/build/static/index.html"));
+   });
 
-app.get("*",(req, res) => {
-  res.sendFile(path.resolve(__dirname,"../frontend/build/static/index.html"));
- });
+};
 module.exports = app;
 
 
