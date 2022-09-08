@@ -1,11 +1,9 @@
-import React, { useState } from "react";
+import React, {  useState } from "react";
 import "./Login.css";
 import {  Button, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { lodeUser, loginUser } from "../../Actions/User"
 
-import {ToastContainer,toast} from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch } from "react-redux";
 
 const Login = () => {
@@ -13,15 +11,14 @@ const Login = () => {
 
 
   const dispatch = useDispatch();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("demo@gmail.com");
+  const [password, setPassword] = useState("demouser");
 
   const formSubmit = async (e) => {
     e.preventDefault();
-    console.log("Submit")
-
+    
     await dispatch(loginUser(email, password));
-     toast.success("login susscussfully!");
+    // toast.success("login susscussfully!");
     dispatch(lodeUser());
     
 
@@ -52,16 +49,16 @@ const Login = () => {
           }}
 
           required />
+          <Button variant="contained" color="info" type="submit">Login</Button>
         <Link to="/forgot/password">
-          <Typography variant="h6">forgot password</Typography>
+          <Typography variant="h6" >forgot password</Typography>
         </Link>
-        <Button variant="contained" color="info" type="submit">Login</Button>
        
         <Link to="/register">
           <Typography variant="h6">Create account</Typography>
         </Link>
       </form>
-      <ToastContainer />
+      {/* <ToastContainer /> */}
         
     </div>
   );

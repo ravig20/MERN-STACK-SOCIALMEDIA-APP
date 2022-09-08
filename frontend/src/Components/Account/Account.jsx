@@ -14,6 +14,7 @@ import { deleteMyAccountAction } from "../../Actions/User";
 export default function Account() {
   const [ToggleFollowers,setToggleFollowers] = useState(false);
   const [ToggleFollowing,setToggleFollowing] = useState(false);
+  const [isowner,setisowner] = useState(false);
   
   const dispatch = useDispatch();
   useEffect(() => {
@@ -23,10 +24,10 @@ export default function Account() {
 
   const { loading, myPost } = useSelector((store) => store.accountOwnerPost);
   const { loading:userLoding, user} = useSelector((store) => store.user);
-  const {loading:accountdelete, error:deleteaccounterror}  =  useSelector((store) => store.userUpdatedProfile);
+  const { error:deleteaccounterror}  =  useSelector((store) => store.userUpdatedProfile);
   const logoutToMe = () =>{
       dispatch(loginAction());
-      // alert("click me to log out");
+      
   };
   
   const deleteMyAccountHandler = async () =>{
@@ -40,7 +41,13 @@ export default function Account() {
       type:"clearError"
     });
   }
-  // 
+    useEffect(()=>{
+      console.log( typeof user?.profile?.email);
+      console.log(  process.env );
+      if(user?.profile?.email === "demo@gmail.com"){
+        setisowner(true);
+      }
+    },[user?.profile?.email])
   return loading === true && userLoding === true ? (
     <Loder />
   ) : (
@@ -94,21 +101,22 @@ export default function Account() {
             backgroundColor:"rgb(33, 151, 236)",
           }} onClick={logoutToMe} >Logout</Button>
 
-          <Button variant="contained" style={{
+          <Button disabled={isowner} variant="contained" style={{
             marginTop:"1rem",
             marginBottom:"1rem",
           }}>
           <Link to="/update/profile"> Edit profile</Link>
           </Button>
           
-          <Button variant="contained"  >
+          <Button disabled={isowner} variant="contained"  >
           <Link to="/update/password"> Change password</Link>
           </Button>
 
           <Button
             variant="text"
             onClick={deleteMyAccountHandler}
-            disabled={accountdelete}
+            disabled={isowner}
+  
             style={{
               color: "red",
               margin: "2vmax",
