@@ -43,7 +43,7 @@ export default function Commentcard({
         
         isAccount ? (<Button onClick={deleteHandler}>
           <Delete />
-        </Button>) : (userID === user.profile._id) ? (<Button onClick={deleteHandler} >
+        </Button>) : (userID === user?.profile?._id) ? (<Button onClick={deleteHandler} >
           <Delete />
         </Button>) : null
       }

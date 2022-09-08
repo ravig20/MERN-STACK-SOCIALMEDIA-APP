@@ -1,5 +1,5 @@
 import "./search.css";
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { Button, Typography } from "@mui/material";
 import User from "../User/User";
@@ -8,7 +8,6 @@ import { searchUserAction } from "../../Actions/User";
 function Search() {
   const dispatch = useDispatch();
   const {users} = useSelector((store)=>store.searchUser)
-  // console.log("searchUsers",loading,users.searchUser);
   const [searchName, setName] = useState();
   const submitHandler = (e) => {
     e.preventDefault();
@@ -37,13 +36,13 @@ function Search() {
       </form>
       {
         users ? ( <div className="searchResults">
-        {users.searchUser &&
-          users.searchUser.map((user) => (
+        {users?.searchUser &&
+          users?.searchUser.map((user) => (
             <User
-              key={user._id}
-              userId={user._id}
-              name={user.name}
-              avatar={user.avatar.url}
+              key={user?._id}
+              userId={user?._id}
+              name={user?.name}
+              avatar={user?.avatar?.url}
             />
           ))}
       </div>) : null

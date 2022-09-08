@@ -1,6 +1,6 @@
 import { Button, Typography } from '@mui/material';
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { ForgotPasswordAction } from '../../Actions/User';
 import "./ForgotPassword.css";
 
@@ -12,8 +12,8 @@ export default function ForgotPassword() {
     const [confirmPassword, setconfirmPassword] = useState("");
     const [secondPage, setSecondPage] = useState(false);
     const dispatch = useDispatch();
-    const store = useSelector((store)=> store.userUpdatedProfile);
-    console.log(store);
+
+    
     const ForgotPasswordFormSubmit = (e) => {
         e.preventDefault();
         dispatch(ForgotPasswordAction(email, newPasswords, confirmPassword));

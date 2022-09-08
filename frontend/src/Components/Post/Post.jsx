@@ -8,7 +8,7 @@ import { commentsAction, likeAction ,getMyPostAction, UpdateCaptionAction, PostD
 import { getFollowingPost, lodeUser } from "../../Actions/User";
 import User from "../User/User";
 import Commentcard from "../CommentsCard/Commentcard";
-// import User from "../User/User";
+
 
 
 export default function Post({
@@ -40,12 +40,10 @@ export default function Post({
 
   const likeHandler =  () => {
     setLike(!isliked);
-    // setLikedCount(likes.length);
      dispatch(likeAction(PostId)); 
     if (isAccount) {
       dispatch(getMyPostAction());
     } else {
-
       dispatch(getFollowingPost());
     }
   }
@@ -60,9 +58,6 @@ export default function Post({
     dispatch(PostDeleteAction(PostId));
    await dispatch(getMyPostAction());
     dispatch(lodeUser());
-  
-  
-
 }
  
   // post comments
@@ -73,7 +68,6 @@ export default function Post({
      if (isAccount) {
       dispatch(getMyPostAction());
     } else {
-
       dispatch(getFollowingPost()); 
     }
   
@@ -81,14 +75,10 @@ export default function Post({
   
   useEffect(() => likes.forEach(item => {
    
-    if (item._id === user.profile._id) {
+    if (item?._id === user?.profile?._id) {
       setLike(true);
     }
-  }), [likes, user.profile._id]);
-
-
-
-
+  }), [likes, user?.profile?._id]);
 
   return (
 
@@ -148,10 +138,10 @@ export default function Post({
             likes.map(user=>(
              
           <User
-              key={user._id}
-            userId={user._id}
-            name={user.name}
-            avatar={user.avatar.url} // change
+              key={user?._id}
+            userId={user?._id}
+            name={user?.name}
+            avatar={user?.avatar?.url} // change
 
           />
             ))
@@ -195,22 +185,19 @@ export default function Post({
           {
             comments.length>0 ? comments.map((comment) =>(
               <Commentcard
-              key={comment._id}
-              userID= {comment.user._id}
-               name= {comment.user.name}
-                avatar = {comment.user.avatar.url}
-                 comment = {comment.comment}
-                  commentID ={comment._id}
+              key={comment?._id}
+              userID= {comment?.user._id}
+               name= {comment?.user.name}
+                avatar = {comment?.user.avatar.url}
+                 comment = {comment?.comment}
+                  commentID ={comment?._id}
                    postID ={PostId}
                    isAccount ={isAccount}
               />
             )) :<Typography>no comment at</Typography>
           }
-
-
         </div>
       </Dialog>
-
     </div>
   );
 }

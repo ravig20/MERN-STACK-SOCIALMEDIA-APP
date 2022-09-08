@@ -1,13 +1,12 @@
 
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {BrowserRouter, Routes, Route, useParams} from "react-router-dom";
+import {BrowserRouter, Routes, Route} from "react-router-dom";
 import { lodeUser } from "./Actions/User";
 import './App.css';
 import Account from "./Components/Account/Account";
 import ErrorBoundary from "./Components/ErrorBoundary/ErrorBoundary";
 import ForgotPassword from "./Components/ForgotPassword/ForgotPassword";
-// import ErrorBoundary from "./Components/ErrorBoundary/ErrorBoundary";
 import Footer from "./Components/Footer/Footer";
 import Home from "./Components/Home/Home";
 import Login from "./Components/Login/Login";
@@ -27,8 +26,6 @@ import Header from "./Components/Header/Header";
 function App() {
   const dispatch = useDispatch();
   const store = useSelector((store)=>store.user);
-  const Params = useParams();
-  console.log(Params);
   
   
   useEffect(()=>{

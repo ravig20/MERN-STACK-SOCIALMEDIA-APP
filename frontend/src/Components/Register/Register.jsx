@@ -29,7 +29,7 @@ export default function Register() {
         e.preventDefault();
         await dispatch(RegisterUserAction(name,avatar, email, password));
         dispatch(lodeUser());
-        // dispatch(loginUser(email, password));
+       
       };
     return (
         <div className="register">
@@ -78,7 +78,7 @@ export default function Register() {
                     }}
                 />
                 <Link to="/"  style={{fontFamily:"cursive"}}> Already have account? Login here!</Link> 
-                <Button disabled={loading} type="submit"> Register here</Button>
+                <Button variant="contained" colour="info" disabled={loading} type="submit"> Register here</Button>
             </form>
 
         </div>

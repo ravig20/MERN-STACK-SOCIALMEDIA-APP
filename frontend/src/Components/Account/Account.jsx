@@ -46,19 +46,19 @@ export default function Account() {
   ) : (
     <div className="account">
       <div className="accountleft">
-        {myPost && myPost.length > 0 ? (
-          myPost.map((pic) => (
+        {myPost && myPost?.length > 0 ? (
+          myPost?.map((pic) => (
        
             <Post
-              key={pic._id}
-              PostId={pic._id}
-              postImage={pic.image.url}
-              caption={pic.caption}
-              likes={pic.like}
-              comments={pic.comments}
-              ownerImage={pic.owner.avatar.url}
-              ownerName={pic.owner.name}
-              ownerId={pic.owner._id}
+              key={pic?._id}
+              PostId={pic?._id}
+              postImage={pic?.image.url}
+              caption={pic?.caption}
+              likes={pic?.like}
+              comments={pic?.comments}
+              ownerImage={pic?.owner.avatar.url}
+              ownerName={pic?.owner?.name}
+              ownerId={pic?.owner._id}
               isDelete={true}
               isAccount={true}
             />
@@ -70,25 +70,25 @@ export default function Account() {
 
       <div className="accountright">
         <Avatar
-          src={user.profile.avatar.url}
+          src={user?.profile?.avatar?.url}
           sx={{ height: "8vmax", width: "8vmax" }}
           alt="name"
         />
-        <Typography variant="h6">{user.profile.name}</Typography>
+        <Typography variant="h6">{user?.profile?.name}</Typography>
         <div>
           <button onClick={() =>setToggleFollowers(true)}>
             <Typography>Followers</Typography>
           </button>
-          <Typography>{user.profile.followers.length}</Typography >
+          <Typography>{user?.profile?.followers?.length}</Typography >
 
-          <button onClick={() =>setToggleFollowing(true)}>
+          <button  onClick={() =>setToggleFollowing(true)}>
             <Typography>Following</Typography>
           </button>
-          <Typography>{user.profile.following.length}</Typography>
+          <Typography>{user?.profile?.following.length}</Typography>
 
           <Typography> Post </Typography>
 
-          <Typography>{user.profile.post.length}</Typography>
+          <Typography>{user?.profile?.post?.length}</Typography>
 
           <Button variant="contained" style={{
             backgroundColor:"rgb(33, 151, 236)",
@@ -124,13 +124,13 @@ export default function Account() {
         <div className="DialogBox">
           <Typography variant="h4"> Followers </Typography>
           {
-            user && user.profile.followers.length > 0 ? (
-              user.profile.followers.map((follower) =>(
+            user && user?.profile?.followers?.length > 0 ? (
+              user?.profile?.followers?.map((follower) =>(
                 <User
-                key={follower._id}
-                userId={follower._id}
-                name={follower.name}
-                avatar={follower.avatar.url} // Change avatar
+                key={follower?._id}
+                userId={follower?._id}
+                name={follower?.name}
+                avatar={follower?.avatar.url} // Change avatar
                 />
               ))
              )
@@ -144,13 +144,13 @@ export default function Account() {
         <div className="DialogBox">
           <Typography variant="h4"> Following </Typography>
           {
-             user && user.profile.following.length > 0 ? (
-              user.profile.following.map((following) =>(
+             user && user?.profile?.following?.length > 0 ? (
+              user?.profile?.following?.map((following) =>(
                 <User
-                key={following._id}
-                userId={following._id}
-                name={following.name}
-                avatar={following.avatar.url} // Change avatar
+                key={following?._id}
+                userId={following?._id}
+                name={following?.name}
+                avatar={following?.avatar.url} // Change avatar
                 />
               ))
              )

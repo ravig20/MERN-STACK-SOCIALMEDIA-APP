@@ -2,9 +2,9 @@
   "name": "talk-private",
   "version": "1.0.1",
   "description": "this is social media app to provide you talk privately any one",
-  "main": "sever.js",
+  "main": "server.js",
   "scripts": {
-    "dev": "node backend/sever.js", 
+    "dev": "node backend/server.js", 
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false && npm install --prefix frontend && npm run build --prefix frontend"
   },
   "author": "Ravi gupta",

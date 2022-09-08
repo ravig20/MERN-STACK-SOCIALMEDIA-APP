@@ -287,19 +287,19 @@ export const FindUserByIdAction = (id) => async (dispatch) => {
 
 
 export const FindUserdataByIdAction = (id) => async (dispatch) => {
-  console.log("FindUserdataByIdAction running.....")
+  // console.log("FindUserdataByIdAction running.....")
   try {
     dispatch({
       type: "FindoneUserDataRequest",
     });
     const {data} = await axios.get(`/api/v1/user/profile/${id}`);
-    console.log("api data here ",data.user_ProfileData);
+    // console.log("api data here ",data.user_ProfileData);
    
     dispatch({
       type: "FindoneUserDataSuccess",
       payload: data.user_ProfileData,
     });
-    console.log(" FindUserdataByIdAction running done.....");
+    // console.log(" FindUserdataByIdAction running done.....");
   } catch (error) {
     dispatch({
       type: "FindoneUserDataFailure",
@@ -316,7 +316,7 @@ export const followUnfollowAction = (user) => async (dispatch) =>{
 
     });
     const {data} = await axios.get(`/api/v1/follow/${user}`);
-    console.log(data);
+    // console.log(data);
     dispatch({
       type:"FollowSuccess",
       payload: data,

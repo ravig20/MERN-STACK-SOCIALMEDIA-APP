@@ -85,7 +85,7 @@ export const newImageUploadAction = (image,caption) => async (dispatch) => {
         headers: { "Content-Type": "application/json" },
       }
     );
-    console.log("action uploaded by api",data);
+    // console.log("action uploaded by api",data);
     
     dispatch({
       type: "ImageUploadSusscess",
